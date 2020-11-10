@@ -1,9 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-
-
+<button (click)="addMode()" class="add-button" mat-fab color="primary">+</button>
 <div style="height: 100vh; width: 100vw;"
+     *ngIf="options"
      leaflet
-     [leafletOptions]="options">
+     [leafletOptions]="options"
+     [leafletLayers]="markers"
+     (leafletDoubleClick)="createMarker($event)"
+     (leafletMapReady)="onMapReady($event)">
 </div>
-
+<app-add-place
+  *ngIf="isAddMode"
+  (onCancel)="cancelAddPlace()"
+  (onAdd)="addPlace($event)"
+></app-add-place>
 <router-outlet></router-outlet>
+

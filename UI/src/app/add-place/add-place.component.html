@@ -1,0 +1,16 @@
+<mat-card class="add-form-wrapper">
+  <h3>Add new place</h3>
+  <form [formGroup]="placeForm" class="add-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Place name</mat-label>
+      <input formControlName="name" matInput />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Place description</mat-label>
+      <input formControlName="description" matInput />
+    </mat-form-field>
+    <mat-slider formControlName="rate" min="1" max="10" step="1"></mat-slider>
+    <button (click)="add()" [disabled]="!placeForm.valid" mat-button mat-raised-button color="primary">Add</button>
+    <button (click)="cancel()" mat-button mat-raised-button >Cancel</button>
+  </form>
+</mat-card>
